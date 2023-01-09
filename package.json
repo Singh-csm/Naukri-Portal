@@ -1,0 +1,24 @@
+{
+  "name": "project-internshipgroup24",
+  "version": "1.0.0",
+  "description": "openTOInternship-Project24",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Singh-csm/project-InternshipGroup24.git"
+  },
+  "author": "\"Tirthankar Roy\",\"Bhushan Bhuskhade\", \"Chandrashekhar Singh mourya\"",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Singh-csm/project-InternshipGroup24/issues"
+  },
+  "homepage": "https://github.com/Singh-csm/project-InternshipGroup24#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^6.8.3",
+    "validator": "^13.7.0"
+  }
+}
