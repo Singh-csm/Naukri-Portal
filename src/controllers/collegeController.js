@@ -2,7 +2,7 @@ const collegeModel = require("../models/collegeModel")
 const validator = require("../validation/validation")
 const internModel = require ("../models/internModel")
 
-
+ 
 const createCollege = async function(req,res){
 try{
     let data = req.body

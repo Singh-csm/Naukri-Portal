@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const isValidName = function (name) {
   const validName = /^[a-zA-Z_]{1,20}$/;
   return validName.test(name);
-};
+}; 
 
 const isValidFullName = function (name) {
   const validName = /^[a-z A-Z_]{1,50}$/;

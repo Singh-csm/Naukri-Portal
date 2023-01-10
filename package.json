@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "openTOInternship-Project24",
   "main": "index.js",
-  "scripts": {
+  "scripts": { 
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

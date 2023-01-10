@@ -3,7 +3,7 @@ const internModel = require ("../models/internModel")
 const validator = require("../validation/validation")
 const emailValidator = require("email-validator")
  
-const createIntern = async function(req,res){
+const createIntern = async function(req,res){ 
  try{
         let data = req.body
         
