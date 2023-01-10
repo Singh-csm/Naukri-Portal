@@ -7,17 +7,20 @@ const isValidName = function(name){
     const validName = (/^[a-zA-Z_]{1,20}$/)
     return validName.test(name)
 }
-// const isValidFullName = function(fullName){
-//     const validFullName = (/^[a-zA-Z_]{1,20}$/)
-//     return validFullName.test(fullName)
-// }
 
-const isValidEmail = function(email){
-    if(!emailValidator.validate(email)) return res.status(400).send({status:false, msg:"Invalid Email"})
+const isValidMobile = function(name){
+    const validName = (/^[0-9]{10}$/)
+    return validName.test(name)
 }
-const isValidMobile = function(mobile){
-    if(!phoneValidator.validate(mobile)) return res.status(400).send({status:false, msg:"Phone No is Not Valid"})
+ 
+
+ const validlogolink = function (logoLink){
+    const regex = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/;  // not handled properly
+    return regex.test(logoLink)
 }
+
+
+
 
 const isValidObjectId = function(ObjectId){
     return mongoose.Types.ObjectId.isValid(ObjectId)
@@ -30,8 +33,7 @@ const isValid = function(value){
 
 
 module.exports.isValidName = isValidName
-module.exports.isValidEmail = isValidEmail
 module.exports.isValidMobile = isValidMobile
-module.exports.isValidFullName = isValidFullName
 module.exports.isValidObjectId = isValidObjectId
 module.exports.isValid = isValid
+module.exports.validlogolink = validlogolink

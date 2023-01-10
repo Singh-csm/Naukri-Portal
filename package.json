@@ -17,9 +17,13 @@
   },
   "homepage": "https://github.com/Singh-csm/project-InternshipGroup24#readme",
   "dependencies": {
+    "email-validator": "^2.0.4",
     "express": "^4.18.2",
     "init": "^0.1.2",
+    "isuri": "^2.0.3",
+    "isurl": "^4.0.2",
     "mongoose": "^6.8.3",
+    "url": "^0.11.0",
     "valid-url": "^1.0.9",
     "validate-mobile-number": "^1.0.0",
     "validator": "^13.7.0"
