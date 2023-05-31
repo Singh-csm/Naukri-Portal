@@ -6,7 +6,7 @@ const createintern = async function(req,res){
 
     try {
         let data = req.body //require data in variable-- data
-        let {name,email,mobile,collegeName,collegeId} = data  // destructuring is done--
+        let {name,email,mobile,collegeName} = data  // destructuring is done--
 
         if(!validator.isValidName(name) || name.trim().length == 0){ return res.status(404).send({status: false, msg: "Name not valid"}) }
         if(!validator.isValidMobile(mobile)){ return res.status(404).send({status:false, msg: "Mobileno. is not valid"}) }
@@ -14,8 +14,8 @@ const createintern = async function(req,res){
 
         let collegeDetails = await collegeModel.findOne({name : collegeName }) //db call for finding collegeName
         
-        collegeId = collegeDetails._id
-        // data.collegeId = collegeid;
+        let collegeId = collegeDetails._id
+         data.collegeId = collegeId;
 
         let interndata  = await internModel.create(data) 
 

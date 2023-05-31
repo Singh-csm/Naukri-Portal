@@ -3,7 +3,7 @@ const validator = require("../validation/validation")
 const internModel = require("../models/internModel")
 const url = require("valid-url")
 
-const createCollege = async function(req,res){
+const createCollege = async function(req, res){
 try{
     let data = req.body
     const{name, fullName, logoLink} = data
@@ -32,7 +32,7 @@ try{
         return res.status(400).send({status:false, msg: "College Name already exists"})
     }
 
-    let savedData = await collegeSchema.create(data)
+    let savedData = await collegeModel.create(data)
     res.status(201).send({status: true, data: savedData})
 }
 catch(err){
@@ -44,41 +44,30 @@ catch(err){
 
 
 
-const getcollege = async function(req,res){
-
+const getcollege = async function (req, res) {
     try {
- 
-     let C = req.query.collegeName
+      const collegeName = req.query.collegeName;
   
- 
-     let college = await collegeModel.findOne({name:C}).select({_id:1,name:1,fullName:1,logoLink:1}).lean()
-     if (!college) return res.status(404).send({status:false,msg:"college data not found"})
-
+      const college = await collegeModel
+        .findOne({ name: collegeName })
+        .select({ _id: 1, name: 1, fullName: 1, logoLink: 1 })
+        .lean();
         
+        if (!college) {
+            return res.status(404).send({ status: false, msg: "College data not found" });
+        }
+     
+  
+      const internData = await internModel.find({ collegeId: college._id }).select({ name: 1, email: 1, mobile: 1, isDeleted: 1 });
+  
 
-
-
- 
-     let interndata = await internModel.find({collegeId: college._id}).select({name:1,email:1,mobile:1})
-     if (interndata.isDeleted == true){return res.status(400).send({status: false , msg: "intern is already deleted"})}
-     if (!interndata) return res.status(400).send({status : false, msg:"no intern here"})
- 
-     college.interns = interndata;
-
-    //  let Objectdata = {
-    //      name: college.name,
-    //      fullName: college.fullName,
-    //      logoLink: college.logoLink,
-    //      interns: interndata
-    //  }
- 
-     return res.status(200).send({status: true, data: college})
- 
- } catch (error) {
- 
-      return res.status(500).send({status: false , msg : error.message})  
-    } 
- 
+      const interns = internData   //.filter((intern) => !intern.isDeleted);
+  
+      return res.status(200).send({ status: true, data: { ...college, interns } });
+    } catch (error) {
+      return res.status(500).send({ status: false, msg: error.message });
+    }
+  
  }
  
 

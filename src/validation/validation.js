@@ -1,7 +1,5 @@
 const mongoose = require("mongoose")
 
-const emailValidator = require("email-validator")
-
 
 
 const isValidName = function(name){
@@ -11,10 +9,15 @@ const isValidName = function(name){
 
 
 const isValidEmail = function(email){
-    if(!emailValidator.validate(email)) return res.status(400).send({status:false, msg:"Invalid Email"})
+    const EmailRegex = /^\S+@\S+\.\S+$/;
+    return EmailRegex.test(email)
 }
 
 
+const isValidMobile = function(str){
+    const regexExp = /^[6-9]\d{9}$/gi;
+    return regexExp.test(str);
+}
 
 const isValidObjectId = function(ObjectId){
     return mongoose.Types.ObjectId.isValid(ObjectId)
@@ -28,6 +31,7 @@ const isValid = function(value){
 
 module.exports.isValidName = isValidName
 module.exports.isValidEmail = isValidEmail
+module.exports.isValidMobile = isValidMobile
 
 
 module.exports.isValidObjectId = isValidObjectId
